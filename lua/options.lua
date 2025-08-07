@@ -17,4 +17,5 @@ vim.keymap.set("x", "<Leader>y", '"+y', { desc = "Yank selected to system clipbo
 vim.keymap.set("n", "<Leader>yy", '"+yy', { desc = "Yank line to system clipboard" })
 vim.keymap.set({ "n", "x" }, "<Leader>p", '"+p', { desc = "Paste from system clipboard (after)" })
 
+-- open netrw
 vim.keymap.set("n", "<Leader>lf", ":Ex<CR>", { desc = "Open NetRW" })

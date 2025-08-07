@@ -1,2 +1,1 @@
-#INTRO
 Nvim config file

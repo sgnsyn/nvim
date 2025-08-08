@@ -19,3 +19,11 @@ vim.keymap.set({ "n", "x" }, "<Leader>p", '"+p', { desc = "Paste from system cli
 
 -- open netrw
 vim.keymap.set("n", "<Leader>lf", ":Ex<CR>", { desc = "Open NetRW" })
+
+-- Move line up/down in normal mode
+vim.keymap.set("n", "<A-j>", ":m .+1<CR>==", { desc = "Move line down", silent = true })
+vim.keymap.set("n", "<A-k>", ":m .-2<CR>==", { desc = "Move line up", silent = true })
+
+-- Move selected lines up/down in visual mode
+vim.keymap.set("v", "<A-j>", ":m '>+1<CR>gv=gv", { desc = "Move selection down", silent = true })
+vim.keymap.set("v", "<A-k>", ":m '<-2<CR>gv=gv", { desc = "Move selection up", silent = true })

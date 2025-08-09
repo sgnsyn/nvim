@@ -22,6 +22,8 @@ return {
       lspconfig.ts_ls.setup({ capabilities = capabilities })
       lspconfig.gopls.setup({ capabilities = capabilities })
       lspconfig.postgres_lsp.setup({ capabilities = capabilities })
+      lspconfig.html.setup({ capabilities = capabilities })
+      lspconfig.cssls.setup({ capabilities = capabilities })
 
       vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "lsp show information" })
       vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { desc = "LSP goto declaration" })

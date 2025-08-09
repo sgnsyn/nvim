@@ -29,4 +29,4 @@ vim.keymap.set("v", "<A-j>", ":m '>+1<CR>gv=gv", { desc = "Move selection down",
 vim.keymap.set("v", "<A-k>", ":m '<-2<CR>gv=gv", { desc = "Move selection up", silent = true })
 
 -- Clear highlighting after searching
-vim.keymap.set("n", "<Leader>k", "<cmd>nohlsearch<CR>", { silent = true, desc = "cmd nohlsearch" })
+vim.keymap.set("n", "<Leader>cc", "<cmd>nohlsearch<CR>", { silent = true, desc = "cmd nohlsearch" })

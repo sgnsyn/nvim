@@ -15,6 +15,6 @@ return {
       },
     })
     vim.keymap.set("n", "<leader>rr", ":RunCode<CR>", { desc = "Run code file" })
-    vim.keymap.set("n", "<leader>rc", ":RunClose<CR>", { desc = "Run code file" })
+    vim.keymap.set("n", "<leader>rk", ":RunClose<CR>", { desc = "Terminate code run" })
   end,
 }

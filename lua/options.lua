@@ -14,7 +14,7 @@ vim.keymap.set('n', '<c-l>', ':wincmd l <CR>')
 
 -- Copy system clipboard
 vim.keymap.set("x", "<Leader>y", '"+y', { desc = "Yank selected to system clipboard" })
-vim.keymap.set("n", "<Leader>yy", '"+yy', { desc = "Yank line to system clipboard" })
+vim.keymap.set("n", "<Leader>y", '"+yy', { desc = "Yank line to system clipboard" })
 vim.keymap.set({ "n", "x" }, "<Leader>p", '"+p', { desc = "Paste from system clipboard (after)" })
 
 -- open netrw
@@ -29,4 +29,7 @@ vim.keymap.set("v", "<A-j>", ":m '>+1<CR>gv=gv", { desc = "Move selection down",
 vim.keymap.set("v", "<A-k>", ":m '<-2<CR>gv=gv", { desc = "Move selection up", silent = true })
 
 -- Clear highlighting after searching
-vim.keymap.set("n", "<Leader>cc", "<cmd>nohlsearch<CR>", { silent = true, desc = "cmd nohlsearch" })
+vim.keymap.set("n", "<Leader>ch", "<cmd>nohlsearch<CR>", { silent = true, desc = "cmd nohlsearch" })
+
+--To execute the 'q' macro
+vim.keymap.set("n", "<Leader>q", "@q", { desc = "execute the 'q' macro" })

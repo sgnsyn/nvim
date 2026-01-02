@@ -2,17 +2,19 @@ return {
   {
     "mattn/emmet-vim",
     config = function()
-      vim.g.user_emmet_leader_key = ","
+      vim.g.user_emmet_leader_key = ','
 
       vim.g.user_emmet_settings = {
         variables = {
-          lang = 'ja'
+          lang = "en",
         },
+
         html = {
           default_attributes = {
             option = { value = vim.NIL },
-            textarea = { id = vim.NIL, name = vim.NIL, cols = 10, rows = 10 }
+            textarea = { id = vim.NIL, name = vim.NIL, cols = 10, rows = 10 },
           },
+
           snippets = {
             ["html:5"] = table.concat({
               "<!DOCTYPE html>",
@@ -25,11 +27,11 @@ return {
               "<body>",
               "\t${child}|",
               "</body>",
-              "</html>"
-            }, "\n")
-          }
-        }
+              "</html>",
+            }, "\n"),
+          },
+        },
       }
-    end
-  }
+    end,
+  },
 }

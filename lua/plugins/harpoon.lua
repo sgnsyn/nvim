@@ -14,9 +14,17 @@ return {
       },
     })
 
+    -- Helper function to ensure mini.files is closed before switching buffers
+    local function close_minifiles()
+      if vim.bo.filetype == "minifiles" then
+        require("mini.files").close()
+      end
+    end
+
     local conf = require("telescope.config").values
 
     local function toggle_telescope(harpoon_files)
+      close_minifiles() -- Close explorer before opening telescope
       local file_paths = {}
       for _, item in ipairs(harpoon_files.items) do
         table.insert(file_paths, item.value)
@@ -44,10 +52,7 @@ return {
     end
 
     local function harpoon_nav(action)
-      if vim.bo.filetype == "neo-tree" then
-        vim.cmd("Neotree close")
-      end
-
+      close_minifiles() -- Close explorer before jumping to a file
       local list = harpoon:list()
       if action == "next" then
         list:next()
@@ -59,19 +64,25 @@ return {
     end
 
     -- Keymaps
-    vim.keymap.set("n", "<C-e>", function() toggle_telescope(harpoon:list()) end,
-      { desc = "Open harpoon list in Telescope" })
-    vim.keymap.set("n", "<leader>he", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end,
-      { desc = "Harpoon: Toggle Native UI" })
-    vim.keymap.set("n", "<leader>ha", function() harpoon:list():add() end, { desc = "Harpoon: Add File" })
+    vim.keymap.set("n", "<C-e>", function() 
+      toggle_telescope(harpoon:list()) 
+    end, { desc = "Open harpoon list in Telescope" })
+
+    vim.keymap.set("n", "<leader>he", function() 
+      close_minifiles() -- Close explorer before opening Harpoon UI
+      harpoon.ui:toggle_quick_menu(harpoon:list()) 
+    end, { desc = "Harpoon: Toggle Native UI" })
+
+    vim.keymap.set("n", "<leader>ha", function() 
+      harpoon:list():add() 
+    end, { desc = "Harpoon: Add File" })
 
     -- Nav Keymaps
-    vim.keymap.set("n", "<leader>h1", function() harpoon_nav(1) end, { desc = "Harpoon: Goto 1" })
-    vim.keymap.set("n", "<leader>h2", function() harpoon_nav(2) end, { desc = "Harpoon: Goto 2" })
-    vim.keymap.set("n", "<leader>h3", function() harpoon_nav(3) end, { desc = "Harpoon: Goto 3" })
-    vim.keymap.set("n", "<leader>h4", function() harpoon_nav(4) end, { desc = "Harpoon: Goto 4" })
-
-    vim.keymap.set("n", "<leader>hp", function() harpoon_nav("prev") end, { desc = "Harpoon: Prev" })
-    vim.keymap.set("n", "<leader>hn", function() harpoon_nav("next") end, { desc = "Harpoon: Next" })
+    vim.keymap.set("n", "<leader>h1", function() harpoon_nav(1) end)
+    vim.keymap.set("n", "<leader>h2", function() harpoon_nav(2) end)
+    vim.keymap.set("n", "<leader>h3", function() harpoon_nav(3) end)
+    vim.keymap.set("n", "<leader>h4", function() harpoon_nav(4) end)
+    vim.keymap.set("n", "<leader>hp", function() harpoon_nav("prev") end)
+    vim.keymap.set("n", "<leader>hn", function() harpoon_nav("next") end)
   end,
 }
